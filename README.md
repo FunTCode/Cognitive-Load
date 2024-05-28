@@ -22,7 +22,7 @@ Due to the need for privacy protection of subjects, the data files have been noi
 
 1.  Download or clone this project to your local computer.
 2.  Prepare the runtime environment and make sure the required dependencies are installed. You can install the dependencies using the following command：
-        ```console
+        ```
         pip install -r requirements.txt
         ```
 3.  Open the exp_1 or exp_2 folder to view the corresponding data and program code.
