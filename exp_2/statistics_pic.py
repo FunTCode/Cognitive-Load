@@ -5,7 +5,7 @@ import matplotlib.ticker as ticker
 # Reading CSV file
 df = pd.read_csv(r'./exp_2/release_data_predicted.csv')
 
-# 将Difficulty和Predicted列的值映射为对应的标签
+# Map the values of the Difficulty and Predicted columns to the corresponding labels
 df['Difficulty'] = df['Difficulty'].map({1: 'Low', 2: 'High'})
 df['Predicted'] = df['Predicted'].map({0: 'Baseline', 1: 'Low', 2: 'High'})
 
@@ -46,7 +46,7 @@ plt.show()
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# 读取已处理好的数据
+# Read processed data
 df = pd.read_csv(r'./exp_2/release_data_predicted.csv')
 
 # Group the questions according to difficulty and Seq, and calculate the average Predicted values of all participants under each Seq
@@ -57,7 +57,7 @@ difficulty_1_data = grouped[grouped['Difficulty'] == 1]
 # Filter out the data with problem difficulty of 2
 difficulty_2_data = grouped[grouped['Difficulty'] == 2]
 
-# 使用移动平均平滑数据
+# Smooth data using moving averages
 window_size = 5  # Window size
 difficulty_1_data_smooth = difficulty_1_data['Predicted'].rolling(window=window_size, min_periods=1).mean()
 difficulty_2_data_smooth = difficulty_2_data['Predicted'].rolling(window=window_size, min_periods=1).mean()
