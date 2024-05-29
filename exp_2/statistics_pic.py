@@ -40,3 +40,45 @@ plt.ylabel('Predicted Difficulty Ratio (%)')
 plt.xticks(rotation=0)
 plt.legend(['Low', 'High', 'Baseline'], fontsize=12)
 plt.show()
+
+#########################################################################################################################
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# 读取已处理好的数据
+df = pd.read_csv(r'./exp_2/release_data_predicted.csv')
+
+# Group the questions according to difficulty and Seq, and calculate the average Predicted values of all participants under each Seq
+grouped = df.groupby(['Difficulty', 'Seq'])['Predicted'].mean().reset_index()
+
+# Filter out the data with difficulty 1
+difficulty_1_data = grouped[grouped['Difficulty'] == 1]
+# Filter out the data with problem difficulty of 2
+difficulty_2_data = grouped[grouped['Difficulty'] == 2]
+
+# 使用移动平均平滑数据
+window_size = 5  # Window size
+difficulty_1_data_smooth = difficulty_1_data['Predicted'].rolling(window=window_size, min_periods=1).mean()
+difficulty_2_data_smooth = difficulty_2_data['Predicted'].rolling(window=window_size, min_periods=1).mean()
+
+# Draw a line chart
+plt.figure(figsize=(10, 6))
+
+# Draw a line chart with Difficulty of 1 (smoothing)
+plt.plot(difficulty_1_data['Seq'], difficulty_1_data_smooth, label='Low Difficulty')
+
+# Draw a line chart with Difficulty 2 (smoothing)
+plt.plot(difficulty_2_data['Seq'], difficulty_2_data_smooth, label='High Difficulty')
+
+# Add titles and labels
+plt.title('Average Cognitive Load (Predicted) over Time by Difficulty Level',fontsize=16)
+plt.xlabel('Time (s)',fontsize=14)
+plt.ylabel('Cognitive Load (Predicted)',fontsize=14)
+plt.yticks([0, 1, 2], ['Baseline', 'Low', 'High'],fontsize=12)
+plt.legend(fontsize=12)
+plt.grid(True)
+
+plt.show()
+
+
