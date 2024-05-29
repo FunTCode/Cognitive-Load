@@ -32,6 +32,6 @@ Due to the need for privacy protection of subjects, the data files have been noi
 
 This project is licensed under the GNU General Public License v3.0.
 
-## Acknowledgements
+## OCRID
 
-Thanks to all contributors to this project.
+[![ORCID](https://img.shields.io/badge/ORCID-iD-green)]([https://orcid.org/your-orcid-id](https://orcid.org/0009-0005-7084-1184))
