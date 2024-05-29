@@ -34,5 +34,5 @@ This project is licensed under the GNU General Public License v3.0.
 
 ## OCRID
 
-[![ORCID](https://img.shields.io/badge/ORCID-iD-green)](https://orcid.org/0009-0005-7084-1184) 0009-0005-7084-1184
+[我的ORCID](https://orcid.org/0009-0005-7084-1184)
 
